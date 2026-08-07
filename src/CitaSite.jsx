@@ -13,9 +13,9 @@ import logoAnptech2026 from "./assets/logo-anptech2026.jpeg";
 
 const NAV_ITEMS = [
   { label: "Início", href: "inicio" },
+  { label: "Sobre Nós", href: "sobre" },
   { label: "Próximos Eventos", href: "eventos" },
   { label: "Anptech Summit 2026", href: "anptech" },
-  { label: "Sobre Nós", href: "sobre" },
   { label: "Contato", href: "contato" },
 ];
 
@@ -466,6 +466,54 @@ export default function CitaSite() {
             </div>
           </section>
 
+          {/* ============================= SOBRE NÓS ============================= */}
+          <section id="sobre" className="py-24 bg-slate-50">
+            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
+              <div>
+                <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
+                  <span className="w-5 h-px bg-orange-500 inline-block" /> Quem somos
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>O ponto de encontro da inovação em Araçatuba</h2>
+                <p className="text-slate-500 mb-4">
+                  O CITA é o ponto de encontro do ecossistema de inovação em Araçatuba. Nossa essência está em conectar pessoas, conhecimento, tecnologia e oportunidades para impulsionar o desenvolvimento sustentável.
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Em uma cidade que já se consolidou como referência regional em diversos setores econômicos, o CITA atua fortalecendo a articulação entre empresas, instituições de ensino, poder público e redes de apoio.
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Com políticas públicas implantadas para tecnologia e inovação, criamos um ambiente favorável à geração de negócios, ao desenvolvimento de talentos e à construção de soluções que ampliam a competitividade e impulsionam o crescimento.
+                </p>
+                <p className="text-slate-500 mb-6">
+                  Mais do que um espaço, o CITA é um movimento que conecta ideias, pessoas e iniciativas para posicionar Araçatuba como uma referência estadual em tecnologia e inovação.
+                </p>
+                <div className="inline-flex items-center gap-2.5 bg-slate-950 text-slate-50 px-5 py-2.5 rounded-full text-xs" style={FONT_MONO}>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  Programa de Incubação CITA Hub · parceria Sebrae Startups
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-5">
+                {MISSAO_VISAO.map(({ titulo, texto }) => (
+                  <div key={titulo} className="p-5 bg-white border border-slate-200 rounded-2xl">
+                    <h4 className="font-semibold mb-1.5 text-orange-600" style={FONT_DISPLAY}>{titulo}</h4>
+                    <p className="text-sm text-slate-500 m-0">{texto}</p>
+                  </div>
+                ))}
+
+                <div className="p-5 bg-white border border-slate-200 rounded-2xl">
+                  <h4 className="font-semibold mb-3" style={FONT_DISPLAY}>Valores</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {VALORES.map((v) => (
+                      <span key={v} className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs" style={FONT_MONO}>
+                        {v}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* ============================= COMO O CITA ATUA ============================= */}
           <section id="atuacao" className="py-24 bg-slate-50">
             <div className="max-w-6xl mx-auto px-6">
@@ -658,54 +706,6 @@ export default function CitaSite() {
             </div>
           </section>
 
-          {/* ============================= SOBRE NÓS ============================= */}
-          <section id="sobre" className="py-24 bg-slate-50">
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-              <div>
-                <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
-                  <span className="w-5 h-px bg-orange-500 inline-block" /> Quem somos
-                </p>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>O ponto de encontro da inovação em Araçatuba</h2>
-                <p className="text-slate-500 mb-4">
-                  O CITA é o ponto de encontro do ecossistema de inovação em Araçatuba. Nossa essência está em conectar pessoas, conhecimento, tecnologia e oportunidades para impulsionar o desenvolvimento sustentável.
-                </p>
-                <p className="text-slate-500 mb-4">
-                  Em uma cidade que já se consolidou como referência regional em diversos setores econômicos, o CITA atua fortalecendo a articulação entre empresas, instituições de ensino, poder público e redes de apoio.
-                </p>
-                <p className="text-slate-500 mb-4">
-                  Com políticas públicas implantadas para tecnologia e inovação, criamos um ambiente favorável à geração de negócios, ao desenvolvimento de talentos e à construção de soluções que ampliam a competitividade e impulsionam o crescimento.
-                </p>
-                <p className="text-slate-500 mb-6">
-                  Mais do que um espaço, o CITA é um movimento que conecta ideias, pessoas e iniciativas para posicionar Araçatuba como uma referência estadual em tecnologia e inovação.
-                </p>
-                <div className="inline-flex items-center gap-2.5 bg-slate-950 text-slate-50 px-5 py-2.5 rounded-full text-xs" style={FONT_MONO}>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  Programa de Incubação CITA Hub · parceria Sebrae Startups
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-5">
-                {MISSAO_VISAO.map(({ titulo, texto }) => (
-                  <div key={titulo} className="p-5 bg-white border border-slate-200 rounded-2xl">
-                    <h4 className="font-semibold mb-1.5 text-orange-600" style={FONT_DISPLAY}>{titulo}</h4>
-                    <p className="text-sm text-slate-500 m-0">{texto}</p>
-                  </div>
-                ))}
-
-                <div className="p-5 bg-white border border-slate-200 rounded-2xl">
-                  <h4 className="font-semibold mb-3" style={FONT_DISPLAY}>Valores</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {VALORES.map((v) => (
-                      <span key={v} className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs" style={FONT_MONO}>
-                        {v}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ============================= CONTATO ============================= */}
           <section id="contato" className="py-24 bg-slate-950 text-slate-50">
             <div className="max-w-6xl mx-auto px-6">
@@ -756,35 +756,35 @@ export default function CitaSite() {
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="nome">Nome</label>
                       <input id="nome" value={contato.nome} onChange={(e) => setContato({ ...contato, nome: e.target.value })}
-                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="organizacao">Organização</label>
                       <input id="organizacao" value={contato.organizacao} onChange={(e) => setContato({ ...contato, organizacao: e.target.value })}
-                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="whatsapp">WhatsApp</label>
                       <input id="whatsapp" value={contato.whatsapp} onChange={(e) => setContato({ ...contato, whatsapp: e.target.value })}
-                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="email">E-mail</label>
                       <input id="email" type="email" value={contato.email} onChange={(e) => setContato({ ...contato, email: e.target.value })}
-                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 mb-4">
                     <label className="text-xs text-slate-400" htmlFor="assunto">Assunto</label>
                     <input id="assunto" value={contato.assunto} onChange={(e) => setContato({ ...contato, assunto: e.target.value })}
-                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
+                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
                   </div>
                   <div className="flex flex-col gap-1.5 mb-5">
                     <label className="text-xs text-slate-400" htmlFor="mensagem">Mensagem</label>
                     <textarea id="mensagem" rows={6} value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
-                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none resize-y transition-colors" />
+                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none resize-y transition-all" />
                   </div>
                   <button
                     onClick={enviarContato}
@@ -809,9 +809,13 @@ export default function CitaSite() {
                     src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&z=13&output=embed"
                     width="100%"
                     height="100%"
-                    style={{ border: 0, filter: "grayscale(0.15) contrast(1.05)", position: "absolute", inset: 0 }}
+                    style={{ border: 0, filter: "grayscale(0.25) contrast(1.05) saturate(0.85)", position: "absolute", inset: 0 }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "rgba(5,10,20,0.18)", mixBlendMode: "multiply" }}
                   />
                 </div>
               </div>
@@ -847,13 +851,13 @@ export default function CitaSite() {
               <div className="flex flex-col gap-1.5 mb-4">
                 <label className="text-xs text-slate-500" htmlFor="admin_usuario">Usuário</label>
                 <input id="admin_usuario" value={login.usuario} onChange={(e) => setLogin({ ...login, usuario: e.target.value })}
-                  className="bg-white border border-slate-200 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                  className="bg-white border border-slate-200 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
               </div>
               <div className="flex flex-col gap-1.5 mb-2">
                 <label className="text-xs text-slate-500" htmlFor="admin_senha">Senha</label>
                 <input id="admin_senha" type="password" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })}
                   onKeyDown={(e) => e.key === "Enter" && enviarLogin()}
-                  className="bg-white border border-slate-200 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                  className="bg-white border border-slate-200 focus:border-orange-500 focus:ring-4 focus:ring-orange-500/15 rounded-lg px-3.5 py-3 text-sm outline-none transition-all" />
               </div>
               <p className="text-xs text-slate-400 mb-4">Demonstração: usuário <code>admin</code>, senha <code>cita2026</code>.</p>
               <button onClick={enviarLogin} className="w-full px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
