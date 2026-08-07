@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import {
   Menu, X, Instagram, Eye, Lock, MapPin, Mail, Phone, ArrowRight,
-  Network, Rocket, CalendarDays, Building2, Minus, Plus, LogOut,
+  CalendarDays, Minus, Plus, LogOut,
+  Landmark, GraduationCap, Lightbulb, Handshake, Cpu, Users, MessageCircle, Globe,
 } from "lucide-react";
 import logoFundoAzul from "./assets/logo-fundo-azul.png";
 import logoAnptech2026 from "./assets/logo-anptech2026.jpeg";
@@ -19,6 +20,8 @@ const NAV_ITEMS = [
 ];
 
 const INSTAGRAM_URL = "https://www.instagram.com/cit.aracatuba/";
+const WHATSAPP_URL = "https://wa.me/5518991519210";
+const SITE_URL = "https://cita.tec.br";
 
 const EVENTOS = [
   {
@@ -97,28 +100,53 @@ const ANPTECH_NUMEROS = [
   { valor: "5", legenda: "cidades da região representadas no Summit" },
 ];
 
-const PILARES = [
+const CITA_ATUACAO = [
+  { Icon: Landmark, titulo: "Desenvolvimento de políticas públicas" },
+  { Icon: CalendarDays, titulo: "Eventos e networking" },
+  { Icon: GraduationCap, titulo: "Cursos e capacitações" },
+  { Icon: Lightbulb, titulo: "Projetos de inovação" },
+  { Icon: Handshake, titulo: "Apoio ao empreendedorismo" },
+];
+
+const ECOSSISTEMA = [
   {
-    Icon: Network,
-    titulo: "Ecossistema conectado",
-    texto: "Articulação entre empresas de tecnologia, startups, universidades e poder público em um distrito de inovação regional.",
+    Icon: Cpu,
+    titulo: "Empresas de tecnologia",
+    texto: "As empresas de tecnologia são protagonistas da inovação e do desenvolvimento econômico. Elas desenvolvem soluções que impulsionam a transformação digital, aumentam a competitividade das organizações e promovem a qualificação contínua dos profissionais, fortalecendo o ecossistema de inovação de Araçatuba.",
   },
   {
-    Icon: Rocket,
-    titulo: "Incubação CITA Hub",
-    texto: "Mentoria, capacitação e conexões de mercado para startups em fase inicial, em parceria com o Sebrae Startups.",
+    Icon: GraduationCap,
+    titulo: "Instituições de ensino",
+    texto: "As instituições de ensino têm papel essencial na formação de talentos, na geração de conhecimento, na pesquisa e aproximam academia e mercado, estimulando a inovação e contribuindo para o desenvolvimento sustentável da região.",
   },
   {
-    Icon: CalendarDays,
-    titulo: "Eventos e formação",
-    texto: "Realização e apoio a encontros como o ANPTECH Summit, aproximando estudantes, docentes e mercado de trabalho.",
+    Icon: Users,
+    titulo: "Redes de Apoio",
+    texto: "Formadas por entidades de classe, associações, sindicatos, o Sistema S e organizações parceiras que atuam como catalisadoras no desenvolvimento de empresas, na qualificação de pessoas, na representação dos setores produtivos e na promoção de um ambiente mais favorável ao empreendedorismo e à inovação.",
   },
   {
-    Icon: Building2,
-    titulo: "Fortalecimento regional",
-    texto: "Presença conjunta com cidades como Birigui, Penápolis, Guararapes, Andradina e Ilha Solteira, consolidando a Alta Noroeste como polo tech.",
+    Icon: Landmark,
+    titulo: "Poder público",
+    texto: "Desempenha papel estratégico no fortalecimento da inovação, por meio da implementação de políticas públicas, programas e iniciativas que impulsionam o desenvolvimento econômico e a geração de oportunidades — em atuação integrada com empresas, instituições de ensino e redes de apoio.",
   },
 ];
+
+const MISSAO_VISAO = [
+  {
+    titulo: "Missão",
+    texto: "Promover a integração social e tecnológica de Araçatuba e região, criando oportunidades de desenvolvimento humano, econômico e digital por meio da inovação, do empreendedorismo e do acesso à tecnologia. Fomentar um ecossistema colaborativo que conecte empresas, universidades, o setor público, investidores e talentos locais.",
+  },
+  {
+    titulo: "Visão",
+    texto: "Ser reconhecido como o polo de excelência em inovação tecnológica do Noroeste Paulista, até 2030.",
+  },
+  {
+    titulo: "Propósito",
+    texto: "Impulsionar o desenvolvimento de Araçatuba e região por meio da integração entre conhecimento, tecnologia e inovação, com a criação de oportunidades que transformem ideias em soluções reais para as demandas da sociedade e do mercado.",
+  },
+];
+
+const VALORES = ["Criatividade", "Inovação", "Conexão", "Sinergia", "Coragem", "Ousadia", "Ética", "Responsabilidade"];
 
 const FILTROS_A11Y = [
   { valor: "normal", titulo: "Padrão", desc: "Sem filtro de cor" },
@@ -219,7 +247,7 @@ export default function CitaSite() {
   const [loginErro, setLoginErro] = useState("");
   const [logado, setLogado] = useState(false);
 
-  const [contato, setContato] = useState({ nome: "", email: "", telefone: "", perfil: "startup", mensagem: "" });
+  const [contato, setContato] = useState({ nome: "", organizacao: "", whatsapp: "", email: "", assunto: "", mensagem: "" });
   const [contatoStatus, setContatoStatus] = useState(null); // {tipo, texto}
 
   function irPara(id) {
@@ -256,7 +284,7 @@ export default function CitaSite() {
       return;
     }
     setContatoStatus({ tipo: "ok", texto: "Mensagem enviada! A equipe do CITA vai retornar em breve pelo e-mail informado." });
-    setContato({ nome: "", email: "", telefone: "", perfil: "startup", mensagem: "" });
+    setContato({ nome: "", organizacao: "", whatsapp: "", email: "", assunto: "", mensagem: "" });
   }
 
   return (
@@ -407,13 +435,16 @@ export default function CitaSite() {
               <div className="max-w-2xl">
                 <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-4" style={FONT_MONO}>
                   <span className="w-5 h-px bg-orange-500 inline-block" />
-                  Distrito de Inovação de Araçatuba
+                  Conectando tecnologia, inovação e desenvolvimento em Araçatuba
                 </p>
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5" style={FONT_DISPLAY}>
-                  Onde empresas, startups, ensino e poder público se <span className="text-orange-500">conectam</span>.
+                  A inovação não acontece <span className="text-orange-500">sozinha</span>.
                 </h1>
+                <p className="text-slate-300 text-lg max-w-lg mb-2">
+                  Nosso papel é articular conexões.
+                </p>
                 <p className="text-slate-400 text-lg max-w-lg mb-8">
-                  O CITA — Centro de Inovação e Tecnologia de Araçatuba articula o ecossistema tech da Alta Noroeste Paulista: incubação de startups, eventos, capacitação e conexão direta com o mercado.
+                  Entre quem desenvolve tecnologia. Entre quem busca inovação. Entre quem gera conhecimento. E quem transforma ideias em oportunidade.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-10">
                   <button onClick={() => irPara("anptech")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
@@ -431,6 +462,55 @@ export default function CitaSite() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ============================= COMO O CITA ATUA ============================= */}
+          <section id="atuacao" className="py-24 bg-slate-50">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="max-w-xl mb-14">
+                <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
+                  <span className="w-5 h-px bg-orange-500 inline-block" /> Nossa atuação
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={FONT_DISPLAY}>Como o CITA atua</h2>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                {CITA_ATUACAO.map(({ Icon, titulo }) => (
+                  <div key={titulo} className="flex flex-col gap-4 p-5 bg-white border border-slate-200 rounded-2xl">
+                    <div className="w-11 h-11 rounded-xl bg-slate-950 text-orange-500 flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} />
+                    </div>
+                    <h4 className="font-semibold text-sm" style={FONT_DISPLAY}>{titulo}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ============================= ECOSSISTEMA ============================= */}
+          <section id="ecossistema" className="py-24 bg-slate-950 text-slate-50">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="max-w-xl mb-14">
+                <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
+                  <span className="w-5 h-px bg-orange-500 inline-block" /> Ecossistema
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-3" style={FONT_DISPLAY}>Quem faz parte do ecossistema?</h2>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                {ECOSSISTEMA.map(({ Icon, titulo, texto }) => (
+                  <div key={titulo} className="flex gap-4 p-6 border border-slate-800 rounded-2xl">
+                    <div className="w-11 h-11 rounded-xl bg-orange-500/10 text-orange-500 flex items-center justify-center flex-shrink-0">
+                      <Icon size={20} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1.5" style={FONT_DISPLAY}>{titulo}</h4>
+                      <p className="text-sm text-slate-400 m-0">{texto}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -587,10 +667,16 @@ export default function CitaSite() {
                 </p>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>O ponto de encontro da inovação em Araçatuba</h2>
                 <p className="text-slate-500 mb-4">
-                  O CITA — Centro de Inovação e Tecnologia de Araçatuba nasceu para articular o ecossistema de tecnologia da Alta Noroeste Paulista, aproximando empresas, startups, instituições de ensino e poder público em torno de um mesmo objetivo: transformar potencial tecnológico em novos negócios, geração de renda e cultura de inovação para a região.
+                  O CITA é o ponto de encontro do ecossistema de inovação em Araçatuba. Nossa essência está em conectar pessoas, conhecimento, tecnologia e oportunidades para impulsionar o desenvolvimento sustentável.
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Em uma cidade que já se consolidou como referência regional em diversos setores econômicos, o CITA atua fortalecendo a articulação entre empresas, instituições de ensino, poder público e redes de apoio.
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Com políticas públicas implantadas para tecnologia e inovação, criamos um ambiente favorável à geração de negócios, ao desenvolvimento de talentos e à construção de soluções que ampliam a competitividade e impulsionam o crescimento.
                 </p>
                 <p className="text-slate-500 mb-6">
-                  Por meio do programa de incubação <strong>CITA Hub</strong>, realizado em parceria com a plataforma Sebrae Startups, o Centro oferece suporte estruturado para startups de Araçatuba e região — da validação da ideia aos primeiros passos rumo ao mercado.
+                  Mais do que um espaço, o CITA é um movimento que conecta ideias, pessoas e iniciativas para posicionar Araçatuba como uma referência estadual em tecnologia e inovação.
                 </p>
                 <div className="inline-flex items-center gap-2.5 bg-slate-950 text-slate-50 px-5 py-2.5 rounded-full text-xs" style={FONT_MONO}>
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -599,93 +685,121 @@ export default function CitaSite() {
               </div>
 
               <div className="flex flex-col gap-5">
-                {PILARES.map(({ Icon, titulo, texto }) => (
-                  <div key={titulo} className="flex gap-4 p-5 bg-white border border-slate-200 rounded-2xl">
-                    <div className="w-11 h-11 rounded-xl bg-slate-950 text-orange-500 flex items-center justify-center flex-shrink-0">
-                      <Icon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1" style={FONT_DISPLAY}>{titulo}</h4>
-                      <p className="text-sm text-slate-500 m-0">{texto}</p>
-                    </div>
+                {MISSAO_VISAO.map(({ titulo, texto }) => (
+                  <div key={titulo} className="p-5 bg-white border border-slate-200 rounded-2xl">
+                    <h4 className="font-semibold mb-1.5 text-orange-600" style={FONT_DISPLAY}>{titulo}</h4>
+                    <p className="text-sm text-slate-500 m-0">{texto}</p>
                   </div>
                 ))}
+
+                <div className="p-5 bg-white border border-slate-200 rounded-2xl">
+                  <h4 className="font-semibold mb-3" style={FONT_DISPLAY}>Valores</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {VALORES.map((v) => (
+                      <span key={v} className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs" style={FONT_MONO}>
+                        {v}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
 
           {/* ============================= CONTATO ============================= */}
           <section id="contato" className="py-24 bg-slate-950 text-slate-50">
-            <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.85fr_1.15fr] gap-14">
-              <div>
-                <p className="text-orange-300 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>Fale com o CITA</p>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>Vamos conversar sobre o seu projeto</h2>
-                <p className="text-slate-400 mb-6">Startup em fase inicial, empresa parceira ou instituição de ensino — conte um pouco sobre a sua ideia e a equipe do CITA retorna o contato.</p>
+            <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_1.6fr] gap-10">
+              <div className="flex flex-col gap-10">
+                <div>
+                  <p className="text-orange-300 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>Fale com o CITA</p>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>Vamos conversar sobre o seu projeto</h2>
+                  <p className="text-slate-400 mb-6">Se você deseja se conectar ao ecossistema de inovação de Araçatuba, conhecer nossos programas ou desenvolver novas oportunidades, entre em contato conosco.</p>
 
-                <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                  <Mail size={20} className="text-orange-500 flex-shrink-0" />
-                  <div><strong className="block text-sm">E-mail</strong><span className="text-slate-400 text-sm">contato@cita.org.br</span></div>
-                </div>
-                <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                  <Phone size={20} className="text-orange-500 flex-shrink-0" />
-                  <div><strong className="block text-sm">Telefone</strong><span className="text-slate-400 text-sm">(18) 3000-0000</span></div>
-                </div>
-                <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                  <MapPin size={20} className="text-orange-500 flex-shrink-0" />
-                  <div><strong className="block text-sm">Onde estamos</strong><span className="text-slate-400 text-sm">Araçatuba — SP, Alta Noroeste Paulista</span></div>
-                </div>
-                <div className="flex gap-3.5 py-4">
-                  <Instagram size={20} className="text-orange-500 flex-shrink-0" />
-                  <div><strong className="block text-sm">Instagram</strong>
-                    <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">@cit.aracatuba</a>
+                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
+                    <Mail size={20} className="text-orange-500 flex-shrink-0" />
+                    <div><strong className="block text-sm">E-mail</strong><span className="text-slate-400 text-sm">contato@cita.tec.br</span></div>
                   </div>
+                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
+                    <MessageCircle size={20} className="text-orange-500 flex-shrink-0" />
+                    <div><strong className="block text-sm">WhatsApp</strong>
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">(18) 99151-9210</a>
+                    </div>
+                  </div>
+                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
+                    <Globe size={20} className="text-orange-500 flex-shrink-0" />
+                    <div><strong className="block text-sm">Site</strong>
+                      <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">cita.tec.br</a>
+                    </div>
+                  </div>
+                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
+                    <MapPin size={20} className="text-orange-500 flex-shrink-0" />
+                    <div><strong className="block text-sm">Onde estamos</strong><span className="text-slate-400 text-sm">Araçatuba — SP, Alta Noroeste Paulista</span></div>
+                  </div>
+                  <div className="flex gap-3.5 py-4">
+                    <Instagram size={20} className="text-orange-500 flex-shrink-0" />
+                    <div><strong className="block text-sm">Instagram</strong>
+                      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">@cit.aracatuba</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  {contatoStatus && (
+                    <div className={`px-4 py-3.5 rounded-lg text-sm mb-4 ${contatoStatus.tipo === "ok" ? "bg-emerald-400/10 border border-emerald-400 text-emerald-300" : "bg-orange-500/10 border border-orange-500 text-orange-300"}`}>
+                      {contatoStatus.texto}
+                    </div>
+                  )}
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs text-slate-400" htmlFor="nome">Nome</label>
+                      <input id="nome" value={contato.nome} onChange={(e) => setContato({ ...contato, nome: e.target.value })}
+                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs text-slate-400" htmlFor="organizacao">Organização</label>
+                      <input id="organizacao" value={contato.organizacao} onChange={(e) => setContato({ ...contato, organizacao: e.target.value })}
+                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-4 mb-4">
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs text-slate-400" htmlFor="whatsapp">WhatsApp</label>
+                      <input id="whatsapp" value={contato.whatsapp} onChange={(e) => setContato({ ...contato, whatsapp: e.target.value })}
+                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs text-slate-400" htmlFor="email">E-mail</label>
+                      <input id="email" type="email" value={contato.email} onChange={(e) => setContato({ ...contato, email: e.target.value })}
+                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1.5 mb-4">
+                    <label className="text-xs text-slate-400" htmlFor="assunto">Assunto</label>
+                    <input id="assunto" value={contato.assunto} onChange={(e) => setContato({ ...contato, assunto: e.target.value })}
+                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                  </div>
+                  <div className="flex flex-col gap-1.5 mb-4">
+                    <label className="text-xs text-slate-400" htmlFor="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows={4} value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
+                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none resize-y" />
+                  </div>
+                  <button onClick={enviarContato} className="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
+                    Enviar mensagem
+                  </button>
                 </div>
               </div>
 
-              <div>
-                {contatoStatus && (
-                  <div className={`px-4 py-3.5 rounded-lg text-sm mb-4 ${contatoStatus.tipo === "ok" ? "bg-emerald-400/10 border border-emerald-400 text-emerald-300" : "bg-orange-500/10 border border-orange-500 text-orange-300"}`}>
-                    {contatoStatus.texto}
-                  </div>
-                )}
-
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-slate-400" htmlFor="nome">Nome completo</label>
-                    <input id="nome" value={contato.nome} onChange={(e) => setContato({ ...contato, nome: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-slate-400" htmlFor="email">E-mail</label>
-                    <input id="email" type="email" value={contato.email} onChange={(e) => setContato({ ...contato, email: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-slate-400" htmlFor="perfil">Perfil</label>
-                    <select id="perfil" value={contato.perfil} onChange={(e) => setContato({ ...contato, perfil: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none">
-                      <option value="startup">Startup</option>
-                      <option value="empresa">Empresa parceira</option>
-                      <option value="estudante">Estudante / academia</option>
-                      <option value="outro">Outro</option>
-                    </select>
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-xs text-slate-400" htmlFor="telefone">Telefone (opcional)</label>
-                    <input id="telefone" value={contato.telefone} onChange={(e) => setContato({ ...contato, telefone: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-1.5 mb-4">
-                  <label className="text-xs text-slate-400" htmlFor="mensagem">Mensagem</label>
-                  <textarea id="mensagem" rows={4} value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
-                    className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none resize-y" />
-                </div>
-                <button onClick={enviarContato} className="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
-                  Enviar mensagem
-                </button>
+              <div className="rounded-2xl overflow-hidden border border-slate-800 h-80 lg:h-full min-h-[420px]">
+                <iframe
+                  title="Localização do CITA em Araçatuba"
+                  src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "grayscale(0.15) contrast(1.05)" }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </section>
