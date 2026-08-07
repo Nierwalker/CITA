@@ -708,42 +708,44 @@ export default function CitaSite() {
 
           {/* ============================= CONTATO ============================= */}
           <section id="contato" className="py-24 bg-slate-950 text-slate-50">
-            <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1fr_1.6fr] gap-10">
-              <div className="flex flex-col gap-10">
-                <div>
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-10">
+                <div className="rounded-2xl bg-white/[0.03] p-6 md:p-8">
                   <p className="text-orange-300 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>Fale com o CITA</p>
                   <h2 className="text-3xl md:text-4xl font-bold mb-4" style={FONT_DISPLAY}>Vamos conversar sobre o seu projeto</h2>
                   <p className="text-slate-400 mb-6">Se você deseja se conectar ao ecossistema de inovação de Araçatuba, conhecer nossos programas ou desenvolver novas oportunidades, entre em contato conosco.</p>
 
-                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                    <Mail size={20} className="text-orange-500 flex-shrink-0" />
-                    <div><strong className="block text-sm">E-mail</strong><span className="text-slate-400 text-sm">contato@cita.tec.br</span></div>
-                  </div>
-                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                    <MessageCircle size={20} className="text-orange-500 flex-shrink-0" />
-                    <div><strong className="block text-sm">WhatsApp</strong>
-                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">(18) 99151-9210</a>
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3.5 rounded-xl border border-slate-800 p-4">
+                      <Mail size={18} className="text-orange-500 flex-shrink-0" />
+                      <div><strong className="block text-sm">E-mail</strong><span className="text-slate-400 text-sm">contato@cita.tec.br</span></div>
                     </div>
-                  </div>
-                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                    <Globe size={20} className="text-orange-500 flex-shrink-0" />
-                    <div><strong className="block text-sm">Site</strong>
-                      <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">cita.tec.br</a>
+                    <div className="flex items-center gap-3.5 rounded-xl border border-slate-800 p-4">
+                      <MessageCircle size={18} className="text-orange-500 flex-shrink-0" />
+                      <div><strong className="block text-sm">WhatsApp</strong>
+                        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">(18) 99151-9210</a>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex gap-3.5 py-4 border-b border-slate-800">
-                    <MapPin size={20} className="text-orange-500 flex-shrink-0" />
-                    <div><strong className="block text-sm">Onde estamos</strong><span className="text-slate-400 text-sm">Araçatuba — SP, Alta Noroeste Paulista</span></div>
-                  </div>
-                  <div className="flex gap-3.5 py-4">
-                    <Instagram size={20} className="text-orange-500 flex-shrink-0" />
-                    <div><strong className="block text-sm">Instagram</strong>
-                      <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">@cit.aracatuba</a>
+                    <div className="flex items-center gap-3.5 rounded-xl border border-slate-800 p-4">
+                      <Globe size={18} className="text-orange-500 flex-shrink-0" />
+                      <div><strong className="block text-sm">Site</strong>
+                        <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">cita.tec.br</a>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3.5 rounded-xl border border-slate-800 p-4">
+                      <MapPin size={18} className="text-orange-500 flex-shrink-0" />
+                      <div><strong className="block text-sm">Onde estamos</strong><span className="text-slate-400 text-sm">Araçatuba — SP, Alta Noroeste Paulista</span></div>
+                    </div>
+                    <div className="flex items-center gap-3.5 rounded-xl border border-slate-800 p-4">
+                      <Instagram size={18} className="text-orange-500 flex-shrink-0" />
+                      <div><strong className="block text-sm">Instagram</strong>
+                        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="text-slate-100 text-sm underline">@cit.aracatuba</a>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div>
+                <div className="rounded-2xl bg-slate-900 border border-slate-800 shadow-xl p-6 md:p-8">
                   {contatoStatus && (
                     <div className={`px-4 py-3.5 rounded-lg text-sm mb-4 ${contatoStatus.tipo === "ok" ? "bg-emerald-400/10 border border-emerald-400 text-emerald-300" : "bg-orange-500/10 border border-orange-500 text-orange-300"}`}>
                       {contatoStatus.texto}
@@ -754,52 +756,64 @@ export default function CitaSite() {
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="nome">Nome</label>
                       <input id="nome" value={contato.nome} onChange={(e) => setContato({ ...contato, nome: e.target.value })}
-                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="organizacao">Organização</label>
                       <input id="organizacao" value={contato.organizacao} onChange={(e) => setContato({ ...contato, organizacao: e.target.value })}
-                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="whatsapp">WhatsApp</label>
                       <input id="whatsapp" value={contato.whatsapp} onChange={(e) => setContato({ ...contato, whatsapp: e.target.value })}
-                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-xs text-slate-400" htmlFor="email">E-mail</label>
                       <input id="email" type="email" value={contato.email} onChange={(e) => setContato({ ...contato, email: e.target.value })}
-                        className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                        className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 mb-4">
                     <label className="text-xs text-slate-400" htmlFor="assunto">Assunto</label>
                     <input id="assunto" value={contato.assunto} onChange={(e) => setContato({ ...contato, assunto: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none" />
+                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none transition-colors" />
                   </div>
-                  <div className="flex flex-col gap-1.5 mb-4">
+                  <div className="flex flex-col gap-1.5 mb-5">
                     <label className="text-xs text-slate-400" htmlFor="mensagem">Mensagem</label>
-                    <textarea id="mensagem" rows={4} value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
-                      className="bg-slate-900 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none resize-y" />
+                    <textarea id="mensagem" rows={6} value={contato.mensagem} onChange={(e) => setContato({ ...contato, mensagem: e.target.value })}
+                      className="bg-slate-950 border border-slate-700 focus:border-orange-500 rounded-lg px-3.5 py-3 text-sm outline-none resize-y transition-colors" />
                   </div>
-                  <button onClick={enviarContato} className="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
+                  <button
+                    onClick={enviarContato}
+                    className="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm shadow-lg shadow-orange-500/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                    style={FONT_DISPLAY}
+                  >
                     Enviar mensagem
                   </button>
                 </div>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-slate-800 h-80 lg:h-full min-h-[420px]">
-                <iframe
-                  title="Localização do CITA em Araçatuba"
-                  src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, filter: "grayscale(0.15) contrast(1.05)" }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+              <div>
+                <p className="flex items-center gap-2 text-orange-300 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
+                  <MapPin size={14} /> Nossa localização
+                </p>
+                <div
+                  className="relative w-full h-80 md:h-[420px] rounded-3xl overflow-hidden border border-white/10"
+                  style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.35)" }}
+                >
+                  <iframe
+                    title="Localização do CITA em Araçatuba"
+                    src="https://www.google.com/maps?q=Ara%C3%A7atuba,SP&z=13&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: "grayscale(0.15) contrast(1.05)", position: "absolute", inset: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
               </div>
             </div>
           </section>
