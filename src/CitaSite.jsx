@@ -149,6 +149,38 @@ const FONT_DISPLAY = { fontFamily: "'Space Grotesk', system-ui, sans-serif" };
 const FONT_BODY = { fontFamily: "'Inter', system-ui, sans-serif" };
 const FONT_MONO = { fontFamily: "'JetBrains Mono', monospace" };
 
+/* Embed oficial do Instagram (reel/post) via embed.js — o endpoint de embed
+   só resolve no formato /p/<shortcode>/, então normalizamos /reel(s)/ para /p/. */
+function InstagramEmbed({ url }) {
+  const permalink = url.replace(/\/reels?\//, "/p/");
+
+  useEffect(() => {
+    function processar() {
+      if (window.instgrm) window.instgrm.Embeds.process();
+    }
+    const existente = document.getElementById("instagram-embed-script");
+    if (existente) {
+      processar();
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = "instagram-embed-script";
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    script.onload = processar;
+    document.body.appendChild(script);
+  }, [permalink]);
+
+  return (
+    <blockquote
+      className="instagram-media"
+      data-instgrm-permalink={permalink}
+      data-instgrm-version="14"
+      style={{ background: "#FFF", border: 0, borderRadius: "12px", margin: 0, width: "100%", minWidth: "auto" }}
+    />
+  );
+}
+
 /* Filtros SVG de daltonismo — mesmas matrizes usadas na versão PHP */
 function FiltrosSVG() {
   return (
@@ -498,6 +530,23 @@ export default function CitaSite() {
                   <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-300 hover:border-orange-500 hover:text-orange-500 text-slate-700 font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
                     Acompanhar cobertura no Instagram
                   </a>
+
+                  <div className="mt-10 max-w-sm">
+                    <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
+                      <span className="w-5 h-px bg-orange-500 inline-block" /> Assista
+                    </p>
+                    <div
+                      className="relative w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl"
+                      style={{ aspectRatio: "382 / 475" }}
+                    >
+                      <div className="absolute left-0 right-0" style={{ top: -54 }}>
+                        <InstagramEmbed url="https://www.instagram.com/reels/DYh0jbBF9dM/" />
+                      </div>
+                    </div>
+                    <p className="text-slate-500 text-xs mt-3">
+                      Cobertura em vídeo do ANPTECH Summit 2026, direto do Instagram do CITA.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
