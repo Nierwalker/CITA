@@ -432,35 +432,51 @@ export default function CitaSite() {
             </svg>
 
             <div className="relative z-10 max-w-6xl mx-auto px-6">
-              <div className="max-w-2xl">
-                <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-4" style={FONT_MONO}>
-                  <span className="w-5 h-px bg-orange-500 inline-block" />
-                  Conectando tecnologia, inovação e desenvolvimento em Araçatuba
-                </p>
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5" style={FONT_DISPLAY}>
-                  A inovação não acontece <span className="text-orange-500">sozinha</span>.
-                </h1>
-                <p className="text-slate-300 text-lg max-w-lg mb-2">
-                  Nosso papel é articular conexões.
-                </p>
-                <p className="text-slate-400 text-lg max-w-lg mb-8">
-                  Entre quem desenvolve tecnologia. Entre quem busca inovação. Entre quem gera conhecimento. E quem transforma ideias em oportunidade.
-                </p>
-                <div className="flex flex-wrap gap-3 mb-10">
-                  <button onClick={() => irPara("anptech")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
-                    Ver ANPTECH Summit 2026
-                  </button>
-                  <button onClick={() => irPara("sobre")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-700 hover:border-orange-500 hover:text-orange-500 text-slate-100 font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
-                    Conhecer o CITA
-                  </button>
+              <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+                <div className="max-w-2xl">
+                  <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-4" style={FONT_MONO}>
+                    <span className="w-5 h-px bg-orange-500 inline-block" />
+                    Conectando tecnologia, inovação e desenvolvimento em Araçatuba
+                  </p>
+                  <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-5" style={FONT_DISPLAY}>
+                    A inovação não acontece <span className="text-orange-500">sozinha</span>.
+                  </h1>
+                  <p className="text-slate-300 text-lg max-w-lg mb-2">
+                    Nosso papel é articular conexões.
+                  </p>
+                  <p className="text-slate-400 text-lg max-w-lg mb-8">
+                    Entre quem desenvolve tecnologia. Entre quem busca inovação. Entre quem gera conhecimento. E quem transforma ideias em oportunidade.
+                  </p>
+                  <div className="flex flex-wrap gap-3 mb-10">
+                    <button onClick={() => irPara("anptech")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
+                      Ver ANPTECH Summit 2026
+                    </button>
+                    <button onClick={() => irPara("sobre")} className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-slate-700 hover:border-orange-500 hover:text-orange-500 text-slate-100 font-semibold text-sm transition-colors" style={FONT_DISPLAY}>
+                      Conhecer o CITA
+                    </button>
+                  </div>
+                  <div className="flex flex-wrap gap-8 border-t border-slate-800 pt-6">
+                    {ANPTECH_NUMEROS.map((n) => (
+                      <div key={n.legenda}>
+                        <div className="text-2xl font-bold text-slate-50" style={FONT_DISPLAY}>{n.valor}</div>
+                        <div className="text-xs text-slate-400 max-w-[140px]">{n.legenda}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-8 border-t border-slate-800 pt-6">
-                  {ANPTECH_NUMEROS.map((n) => (
-                    <div key={n.legenda}>
-                      <div className="text-2xl font-bold text-slate-50" style={FONT_DISPLAY}>{n.valor}</div>
-                      <div className="text-xs text-slate-400 max-w-[140px]">{n.legenda}</div>
-                    </div>
-                  ))}
+
+                <div className="relative flex justify-center lg:justify-end">
+                  <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-black/40">
+                    <video
+                      className="block w-auto h-auto max-h-[520px]"
+                      src="/video/Video_Cita.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                    />
+                  </div>
                 </div>
               </div>
             </div>
