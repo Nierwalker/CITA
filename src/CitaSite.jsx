@@ -466,16 +466,21 @@ export default function CitaSite() {
                 </div>
 
                 <div className="relative flex justify-center lg:justify-end">
-                  <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-2xl shadow-black/40">
-                    <video
-                      className="block w-auto h-auto max-h-[520px]"
-                      src="/video/Video_Cita.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      controls
-                    />
+                  <div className="w-full max-w-sm">
+                    <div
+                      className="relative w-full overflow-hidden rounded-3xl border border-slate-800 shadow-2xl shadow-black/40"
+                      style={{ aspectRatio: "382 / 610" }}
+                    >
+                      <video
+                        className="absolute inset-0 w-full h-full object-cover"
+                        src="/video/Video_Cita.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        controls
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -483,7 +488,7 @@ export default function CitaSite() {
           </section>
 
           {/* ============================= SOBRE NÓS ============================= */}
-          <section id="sobre" className="py-24 bg-slate-50">
+          <section id="sobre" className="py-24 bg-gradient-to-b from-emerald-100/60 via-emerald-50/50 to-white">
             <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
               <div>
                 <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
@@ -580,7 +585,7 @@ export default function CitaSite() {
           </section>
 
           {/* ============================= EVENTOS ============================= */}
-          <section id="eventos" className="py-24 bg-slate-50">
+          <section id="eventos" className="py-24 bg-gradient-to-b from-emerald-100/60 via-emerald-50/50 to-white">
             <div className="max-w-6xl mx-auto px-6">
               <div className="max-w-xl mb-14">
                 <p className="flex items-center gap-2.5 text-orange-500 text-xs tracking-widest uppercase mb-3.5" style={FONT_MONO}>
@@ -617,7 +622,7 @@ export default function CitaSite() {
           </section>
 
           {/* ============================= ANPTECH SUMMIT ============================= */}
-          <section id="anptech" className="py-24 bg-slate-100">
+          <section id="anptech" className="py-24 bg-gradient-to-b from-emerald-100/60 via-emerald-50/50 to-white">
             <div className="max-w-6xl mx-auto px-6">
               <div
                 className="relative overflow-hidden rounded-3xl text-slate-50 p-8 md:p-14 mb-14"
@@ -681,9 +686,9 @@ export default function CitaSite() {
                     </p>
                     <div
                       className="relative w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl"
-                      style={{ aspectRatio: "382 / 475" }}
+                      style={{ aspectRatio: "382 / 610" }}
                     >
-                      <div className="absolute left-0 right-0" style={{ top: -54 }}>
+                      <div className="absolute" style={{ top: -76, left: "50%", width: "141%", transform: "translateX(-50%)" }}>
                         <InstagramEmbed url="https://www.instagram.com/reels/DYh0jbBF9dM/" />
                       </div>
                     </div>
